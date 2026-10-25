@@ -1,0 +1,51 @@
+---
+title: Nobody Builds Design
+description: The Nobody Builds design system. Logo, mascot, colour, type, voice, design tokens and UI specs in one place.
+template: splash
+hero:
+  title: Nobody builds. Except us.
+  tagline: The Nobody Builds design system. Everything you need to make something look and sound like Nobody Builds, from the logo masters to the tokens in the code.
+  image:
+    file: ../../assets/kit/app-icon.svg
+    alt: The Nobody Builds builder, asleep on a pile of bricks, on a Paper tile.
+  actions:
+    - text: Start with the brand
+      link: /NobodyBuilds-Design/brand/introduction/
+      icon: right-arrow
+    - text: Use the tokens
+      link: /NobodyBuilds-Design/tokens/using-the-kit/
+      variant: minimal
+    - text: Download the kit
+      link: https://github.com/Nobody-Builds/NobodyBuilds-Design/archive/refs/heads/main.zip
+      icon: download
+      variant: minimal
+---
+
+import { CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Asleep on the job
+
+A builder, out cold on a half-built wall. It's the joke in the name: nobody builds. The bricks say the
+opposite: the work is real, and it's already started. The colours come straight from the drawing: the blue of
+the zzz does the work, and the Hard Hat yellow brings the energy.
+
+<CardGrid>
+  <LinkCard title="Logo" description="Seven masters, clear space, minimum sizes and the six things never to do." href="/brand/logo/" />
+  <LinkCard title="Mascot" description="Meet the builder: the files, the dark-surface version and where it shows up." href="/brand/mascot/" />
+  <LinkCard title="Colour" description="Seven colours, one clear system, and the text pairs that pass contrast." href="/brand/colour/" />
+  <LinkCard title="Typography" description="Gilroy does the everyday work. Unbounded brings one bold moment." href="/brand/typography/" />
+  <LinkCard title="Voice" description="Sound like a builder who's in on the joke: clear, warm and specific." href="/brand/voice/" />
+  <LinkCard title="Design tokens" description="Every light and dark colour token, ready to import as CSS or JSON." href="/tokens/reference/" />
+  <LinkCard title="UI specs" description="How the brand becomes the interface: tokens, contrast, type scale and logo use." href="/specs/ui-brand-spec/" />
+  <LinkCard title="Nobody Builds UX" description="Our interaction system. Coming once there's a product to design for." href="/ux/introduction/" />
+</CardGrid>
+
+## One source of truth
+
+Everything on this site is published straight from the
+[NobodyBuilds-Design](https://github.com/Nobody-Builds/NobodyBuilds-Design) repository. Add it to any
+Nobody Builds project as a git submodule and every surface draws from the same kit:
+
+```bash
+git submodule add https://github.com/Nobody-Builds/NobodyBuilds-Design.git design
+```

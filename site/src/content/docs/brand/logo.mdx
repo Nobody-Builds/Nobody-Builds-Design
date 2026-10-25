@@ -1,0 +1,67 @@
+---
+title: Logo
+description: The seven logo masters, which background each one belongs on, clear space, minimum sizes and misuse.
+---
+
+import LogoGallery from '../../../components/LogoGallery.astro';
+
+## One builder. A flexible family.
+
+Use the supplied masters. Keep the spelling and the lowercase wordmark intact. Every master below is the
+real file from [`logo/`](https://github.com/Nobody-Builds/NobodyBuilds-Design/tree/main/logo), as a PNG
+plus an SVG.
+
+<LogoGallery />
+
+The builder is an illustration, and it only exists as pixels: the largest copy is the 460 px GitHub avatar.
+Each SVG wraps its PNG so it drops in wherever an SVG is expected; it is not a vector drawing and doesn't get
+sharper when scaled. If the original high-resolution artwork turns up, rebuild every master from it with
+`python scripts/build-assets.py`.
+
+## Choose the right background
+
+Keep the builder, its outline and the wordmark's proportions intact.
+
+| Surface | Use |
+|---|---|
+| Paper, white or a light brand colour | The **full-colour** masters |
+| Night Shift, Blueprint or any dark photo | The **reversed** lockups and **symbol, dark** (Paper sticker border) |
+
+There are no one-colour masters: the builder is a coloured drawing, and flattening it to one colour loses
+the character. For single-colour print, use the wordmark alone.
+
+## Room to breathe
+
+Keep the lockup together and measure the visible artwork. **H** is the builder's height; scale the master as
+one object.
+
+| Rule | Value |
+|---|---|
+| Builder to stacked wordmark height | **1.25×** |
+| Gap between builder and wordmark | **H ÷ 6** |
+| Clear space on every side | **H ÷ 4** |
+
+## Keep it legible
+
+These are recommended starting sizes. Always check the final output.
+
+| Where | Minimum |
+|---|---|
+| Builder height, on screen | **48 px** |
+| Primary lockup width, on screen | **180 px** |
+| In print | **12 mm** builder / **40 mm** lockup. Proof at actual size before production. |
+| App icon | Builder ≈ **62%** of the tile height, on a Paper field |
+| Largest | **280 px** builder height on screen, the artwork's native size. Don't upscale it. |
+
+Below 48 px the zzz and the face disappear; the favicons in `icons/` are already tuned for those sizes.
+
+## Keep the system intact
+
+The builder is a fixed piece of artwork. Treat it as one recognizable unit.
+
+1. **Don't stretch** it.
+2. **Don't rotate or mirror** it.
+3. **Don't recolour or redraw** the builder, the bricks or the zzz.
+4. **Don't lose the outline** on a dark background. Use the dark master instead.
+5. **Don't add effects** such as shadows, glows or gradients.
+6. **Don't change the type** of the wordmark.

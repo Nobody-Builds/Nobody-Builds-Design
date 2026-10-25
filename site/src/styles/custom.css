@@ -1,0 +1,427 @@
+/* Brand palette and shared type. */
+:root {
+  --nb-night-shift: #172033;
+  --nb-blueprint: #2457a6;
+  --nb-hard-hat: #fdc521;
+  --nb-butter: #ffe8a3;
+  --nb-sky: #cfe0f7;
+  --nb-brick: #ea724a;
+  --nb-paper: #f5f7fb;
+  /* Status fills outside the seven, for ink text. */
+  --nb-green: #a6d98f;
+  --nb-red: #fca5a5;
+  --sl-font: 'Gilroy', var(--sl-font-system);
+  --sl-font-mono: var(--sl-font-system-mono);
+  --sl-text-body: 1rem;
+  --sl-line-height: 1.5;
+  --sl-content-width: 56rem;
+  --nb-toc-width: 16rem;
+  --sl-content-pad-x: 1rem;
+
+  /* Badges retain the tested text/fill pairs in both themes. */
+  --sl-badge-default-bg: var(--nb-blueprint);
+  --sl-badge-default-border: var(--nb-blueprint);
+  --sl-badge-default-text: var(--nb-paper);
+  --sl-badge-note-bg: var(--nb-sky);
+  --sl-badge-note-border: var(--nb-sky);
+  --sl-badge-note-text: var(--nb-night-shift);
+  --sl-badge-success-bg: var(--nb-green);
+  --sl-badge-success-border: var(--nb-green);
+  --sl-badge-success-text: var(--nb-night-shift);
+  --sl-badge-tip-bg: var(--nb-hard-hat);
+  --sl-badge-tip-border: var(--nb-hard-hat);
+  --sl-badge-tip-text: var(--nb-night-shift);
+  --sl-badge-caution-bg: var(--nb-brick);
+  --sl-badge-caution-border: var(--nb-brick);
+  --sl-badge-caution-text: var(--nb-night-shift);
+  --sl-badge-danger-bg: var(--nb-red);
+  --sl-badge-danger-border: var(--nb-red);
+  --sl-badge-danger-text: var(--nb-night-shift);
+}
+
+/* Dark surfaces and semantic colours. */
+:root,
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --sl-color-white: var(--nb-paper);
+  --sl-color-gray-1: #eceef3;
+  --sl-color-gray-2: #c3c8d2;
+  --sl-color-gray-3: #9aa2b4;
+  --sl-color-gray-4: #6b7590;
+  --sl-color-gray-5: #3e4d6b;
+  --sl-color-gray-6: #22304b;
+  --sl-color-gray-7: #1d2840;
+  --sl-color-black: var(--nb-night-shift);
+  --sl-color-accent-low: #263a5c;
+  --sl-color-accent: #a9c8f0;
+  --sl-color-accent-high: #d6e4f8;
+  --sl-color-text: var(--nb-paper);
+  --sl-color-text-accent: var(--sl-color-accent);
+  --sl-color-text-invert: var(--nb-paper);
+  --sl-color-bg: var(--nb-night-shift);
+  --sl-color-bg-nav: #121a2b;
+  --sl-color-bg-sidebar: var(--sl-color-bg-nav);
+  --sl-color-bg-inline-code: var(--sl-color-gray-6);
+  --sl-color-bg-accent: var(--nb-blueprint);
+  --sl-color-hairline: var(--sl-color-gray-5);
+  --sl-color-hairline-light: var(--sl-color-hairline);
+  --sl-color-hairline-shade: var(--sl-color-hairline);
+  --sl-color-blue: var(--nb-sky);
+  --sl-color-blue-low: #24344f;
+  --sl-color-blue-high: var(--nb-sky);
+  --sl-color-green: var(--nb-green);
+  --sl-color-green-low: #26382f;
+  --sl-color-green-high: var(--nb-green);
+  --sl-color-purple: var(--nb-hard-hat);
+  --sl-color-purple-low: #3a3424;
+  --sl-color-purple-high: var(--nb-hard-hat);
+  --sl-color-orange: var(--nb-brick);
+  --sl-color-orange-low: #3b2c2b;
+  --sl-color-orange-high: var(--nb-brick);
+  --sl-color-red: var(--nb-red);
+  --sl-color-red-low: #4a2a2e;
+  --sl-color-red-high: var(--nb-red);
+  --nb-panel: #1d2840;
+  --nb-hover: var(--sl-color-gray-6);
+  --nb-focus: var(--nb-hard-hat);
+  --nb-search-bg: var(--sl-color-bg-nav);
+  --nb-search-text: var(--nb-paper);
+}
+
+/* Light is selected by ThemeProvider before the page paints. */
+:root[data-theme='light'] {
+  color-scheme: light;
+  --sl-color-white: var(--nb-night-shift);
+  --sl-color-gray-1: var(--nb-night-shift);
+  --sl-color-gray-2: #2e3648;
+  --sl-color-gray-3: #4f5a70;
+  --sl-color-gray-4: #6f788b;
+  --sl-color-gray-5: #d3dae6;
+  --sl-color-gray-6: #e4e9f2;
+  --sl-color-gray-7: #eef2f8;
+  --sl-color-black: var(--nb-paper);
+  --sl-color-accent-low: #e3ecf8;
+  --sl-color-accent: var(--nb-blueprint);
+  --sl-color-accent-high: #12305e;
+  --sl-color-text: var(--nb-night-shift);
+  --sl-color-bg: var(--nb-paper);
+  --sl-color-bg-nav: #ffffff;
+  --sl-color-bg-sidebar: var(--nb-paper);
+  --sl-color-blue-low: var(--nb-sky);
+  --sl-color-blue-high: var(--nb-night-shift);
+  --sl-color-green-low: var(--nb-green);
+  --sl-color-green-high: var(--nb-night-shift);
+  --sl-color-purple-low: var(--nb-butter);
+  --sl-color-purple-high: var(--nb-night-shift);
+  --sl-color-orange-low: var(--nb-brick);
+  --sl-color-orange-high: var(--nb-night-shift);
+  --sl-color-red-low: var(--nb-red);
+  --sl-color-red-high: var(--nb-night-shift);
+  --nb-panel: #ffffff;
+  --nb-focus: var(--nb-blueprint);
+  --nb-search-bg: var(--nb-butter);
+  --nb-search-text: var(--nb-night-shift);
+}
+
+/* Type, reading panels and keyboard focus. */
+body {
+  font-size: var(--sl-text-body);
+  line-height: var(--sl-line-height);
+}
+
+:where(h1, h2, h3, h4, h5, h6),
+.card .title,
+.sl-link-card .title {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+button, input, select, textarea,
+.sl-badge {
+  font-family: var(--sl-font);
+}
+
+:focus-visible {
+  outline: 2px solid var(--nb-focus);
+  outline-offset: 3px;
+}
+
+:root[data-has-sidebar] main > .content-panel {
+  background: var(--nb-panel);
+}
+
+.sl-markdown-content {
+  overflow-wrap: anywhere;
+}
+
+/* Header search and navigation. */
+site-search > button[data-open-modal] {
+  background: var(--nb-search-bg);
+  color: var(--nb-search-text);
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+site-search > button[data-open-modal]:hover {
+  border-color: var(--sl-color-text-accent);
+}
+
+site-search > button[data-open-modal] kbd {
+  background: transparent;
+  color: inherit;
+}
+
+.sidebar-content a {
+  border-radius: 999px;
+  padding: 0.45em 0.85em;
+}
+
+.sidebar-content a:hover {
+  background: var(--nb-hover);
+}
+
+.sidebar-content a[aria-current='page'],
+.sidebar-content a[aria-current='page']:hover {
+  background: var(--nb-blueprint);
+  color: var(--sl-color-text-invert);
+}
+
+/* Tables and numbered instructions. */
+.sl-markdown-content table {
+  max-width: 100%;
+  font-size: 0.9375rem;
+}
+
+.sl-markdown-content :is(th, td) {
+  border-bottom: 1px solid var(--sl-color-hairline);
+  padding-block: 0.8rem;
+}
+
+.sl-markdown-content th {
+  color: var(--sl-color-text-accent);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.sl-markdown-content tr {
+  background: transparent;
+}
+
+.sl-steps > li::before {
+  background: var(--nb-blueprint);
+  color: var(--nb-paper);
+  box-shadow: none;
+}
+
+/* Quiet cards, badges and brand asides. */
+.card,
+.sl-link-card {
+  min-width: 0;
+  background: var(--nb-panel);
+  border: 1px solid var(--sl-color-hairline);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: none;
+}
+
+.sl-link-card:hover {
+  background: var(--nb-hover);
+  border-color: var(--sl-color-text-accent);
+}
+
+.card .icon {
+  color: var(--sl-color-text-accent);
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+.sl-badge {
+  border-radius: 999px;
+  font-weight: 500;
+}
+
+.starlight-aside {
+  border-radius: 0 10px 10px 0;
+}
+
+/* Keep text on light asides in the tested ink/fill pair. */
+:root[data-theme='light'] .starlight-aside {
+  --sl-color-text-accent: var(--nb-night-shift);
+  --sl-color-bg-inline-code: transparent;
+}
+
+.starlight-aside :is(a, th),
+.starlight-aside a:hover {
+  color: var(--sl-color-asides-text-accent);
+}
+
+:root[data-theme='light'] .starlight-aside :not(.expressive-code *) > code {
+  background: transparent;
+}
+
+/* Buttons and the single bold home-page moment. */
+.sl-link-button {
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.sl-link-button.primary,
+.sl-link-button.primary:hover {
+  background: var(--nb-blueprint);
+  border-color: var(--nb-blueprint);
+  color: var(--nb-paper);
+}
+
+/* Daylight hero: a Sky panel with Night Shift text, in both themes. */
+:root:not([data-has-sidebar]) .hero {
+  --nb-focus: var(--nb-blueprint);
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background: var(--nb-sky);
+  color: var(--nb-night-shift);
+  border-radius: 20px;
+}
+
+.hero h1 {
+  font-family: 'Unbounded', var(--sl-font);
+  font-weight: 600;
+  font-size: clamp(1.65rem, 3.8vw, 3.25rem);
+  line-height: 1.25;
+  letter-spacing: -0.035em;
+  color: var(--nb-night-shift);
+  text-wrap: balance;
+}
+
+.hero .tagline {
+  color: var(--nb-night-shift);
+  font-size: 1rem;
+  line-height: 1.5;
+  max-width: 48ch;
+}
+
+.hero > .stack {
+  min-width: 0;
+  order: -1;
+  text-align: start;
+}
+
+.hero .copy {
+  align-items: flex-start;
+}
+
+.hero > img {
+  width: min(75%, 17rem);
+  height: auto;
+}
+
+.hero .actions {
+  justify-content: flex-start;
+  gap: 1rem 1.5rem;
+}
+
+.hero .sl-link-button {
+  font-size: 0.9375rem;
+  padding-block: 0.8rem;
+}
+
+.hero .sl-link-button.primary,
+.hero .sl-link-button.primary:hover {
+  background: var(--nb-blueprint);
+  border-color: var(--nb-blueprint);
+  color: var(--nb-paper);
+}
+
+.hero .sl-link-button:is(.secondary, .minimal) {
+  color: var(--nb-night-shift);
+}
+
+.hero .sl-link-button:is(.secondary, .minimal):hover {
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Preserve 16px mobile gutters; wide layouts share a simple grid. */
+@media (max-width: 49.999rem) {
+  /* Splash pages have no mobile menu, so retain their header theme toggle. */
+  :root:not([data-has-sidebar]) .header .right-group {
+    display: flex;
+  }
+
+  :root:not([data-has-sidebar]) .header .right-group .social-icons {
+    display: none;
+  }
+
+  /* Keep the hero within the first screen on phones. */
+  .hero > img {
+    width: 7.5rem;
+  }
+
+  .hero .actions {
+    gap: 0.25rem 1.25rem;
+  }
+}
+
+@media (min-width: 50rem) {
+  :root:not([data-has-sidebar]) .hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 3fr);
+    padding: 3.5rem 2.5rem;
+  }
+
+  .hero > img {
+    width: 100%;
+  }
+}
+
+/* Wide screens: a narrow, fixed "On this page" column, and the reading column
+   centred in the remaining space. Starlight's default hands all spare width to
+   the right column, which leaves a large gap beside the text. */
+@media (min-width: 72rem) {
+  :root[data-has-sidebar][data-has-toc] .right-sidebar-container {
+    width: var(--nb-toc-width);
+  }
+
+  :root[data-has-sidebar][data-has-toc] .main-pane {
+    --sl-content-margin-inline: auto;
+    width: calc(100% - var(--nb-toc-width));
+  }
+}
+
+/* Theme switch (components/ThemeSelect.astro), the same as Space Works Events: the new theme is revealed
+   as a soft-edged circle growing from the toggle; the old snapshot stays still. */
+@property --nb-reveal {
+  syntax: '<length>';
+  inherits: true;
+  initial-value: 0px;
+}
+
+.nb-theme-reveal::view-transition-old(root),
+.nb-theme-reveal::view-transition-new(root),
+.nb-theme-reveal-soft::view-transition-old(root),
+.nb-theme-reveal-soft::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+.nb-theme-reveal::view-transition-new(root),
+.nb-theme-reveal-soft::view-transition-new(root) {
+  z-index: 1;
+}
+
+.nb-theme-reveal-soft::view-transition-new(root) {
+  -webkit-mask-image: radial-gradient(circle at var(--nb-reveal-x) var(--nb-reveal-y), #000 calc(var(--nb-reveal) - 160px), transparent var(--nb-reveal));
+  mask-image: radial-gradient(circle at var(--nb-reveal-x) var(--nb-reveal-y), #000 calc(var(--nb-reveal) - 160px), transparent var(--nb-reveal));
+}
+
+/* Fallback when View Transitions aren't available: a gentle colour cross-fade. */
+.nb-theme-fade,
+.nb-theme-fade *,
+.nb-theme-fade *::before,
+.nb-theme-fade *::after {
+  transition-property: background-color, border-color, color, fill, stroke, box-shadow !important;
+  transition-duration: 420ms !important;
+  transition-timing-function: cubic-bezier(0.45, 0, 0.2, 1) !important;
+}

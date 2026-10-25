@@ -1,0 +1,55 @@
+---
+title: Colour
+description: The seven Nobody Builds colours, how to balance them, and the text pairs that pass contrast.
+---
+
+import ColorGrid from '../../../components/ColorGrid.astro';
+import Pairings from '../../../components/Pairings.astro';
+
+## Seven colours. One clear system.
+
+Exact sRGB values, built from the builder: the zzz blue and the hard hat yellow lead, the bricks add
+warmth, and a cool blue-white Paper is the canvas. Three core colours, three accents and a daylight canvas.
+These come straight from
+[`tokens/tokens.json`](https://github.com/Nobody-Builds/NobodyBuilds-Design/blob/main/tokens/tokens.json).
+
+<ColorGrid />
+
+## Neutral first, accent second
+
+Most of any layout is Paper and Night Shift. Blueprint carries actions, Sky opens up whole sections, Hard
+Hat is the one moment of energy, and Butter and Brick stay small.
+
+<div class="nb-balance not-content" role="img" aria-label="Colour balance: mostly paper, then blueprint, then night shift and sky, with smaller amounts of hard hat, butter and brick">
+  <span style="flex:40;background:#F5F7FB"></span>
+  <span style="flex:18;background:#2457A6"></span>
+  <span style="flex:14;background:#172033"></span>
+  <span style="flex:14;background:#CFE0F7"></span>
+  <span style="flex:6;background:#FDC521"></span>
+  <span style="flex:4;background:#FFE8A3"></span>
+  <span style="flex:4;background:#EA724A"></span>
+</div>
+
+- **Blueprint** is the primary brand colour and the action colour: the builder's zzz, taken deeper so
+  Paper text passes on it.
+- **Hard Hat** is energy and emphasis: the yellow of the builder's hat, one bold moment per layout.
+- **Sky** can fill whole sections, like the home page hero, and carries supporting information.
+- **Butter** is a small highlight. **Brick** is a warm accent and the warning colour. Both take Night Shift
+  text.
+- **Paper** is a cool blue-white, not cream, so the whole palette reads like daylight.
+- **Night Shift** is a deep navy rather than black, so the dark side of the palette stays blue.
+
+## Readable by design
+
+Use only tested text pairings, and add a word or an icon to every status.
+
+<Pairings />
+
+- Normal text needs **≥ 4.5:1**; large text needs **≥ 3:1**. Large means 24 px regular or 18.7 px bold.
+- **Avoid yellow or Brick text on Paper.** Hard Hat only reaches 1.49:1 and Brick 2.80:1. Use Blueprint
+  for coloured text.
+- Ratios follow WCAG 2.2 *Contrast (Minimum)* and *Use of Color*. `scripts/build-tokens.py` checks every
+  pair and refuses to write the tokens if one fails.
+
+The full light and dark palettes, with every ratio computed, are in the
+[token reference](/tokens/reference/) and the [UI brand spec](/specs/ui-brand-spec/).

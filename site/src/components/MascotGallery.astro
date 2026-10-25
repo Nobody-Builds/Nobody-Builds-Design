@@ -1,0 +1,33 @@
+---
+// The builder from mascot/: the hero, the same art for dark surfaces from mascot/dark/, and the
+// original avatar pixels from mascot/original/.
+import { kitUrl } from './kit-url';
+
+const files = [
+  { show: 'builder.png', name: 'The builder', use: 'Hero pose', surface: 'paper', downloads: ['builder.png'] },
+  { show: 'dark/builder.png', name: 'The builder, on dark', use: 'Paper sticker border', surface: 'ink', downloads: ['dark/builder.png'] },
+  { show: 'original/builder.png', name: 'Original', use: 'The 460 px avatar, untouched', surface: 'white', downloads: ['original/builder.png'] },
+];
+const label = (path: string) => (path.startsWith('original/') ? 'Original PNG' : 'PNG');
+---
+
+<div class="nb-logos not-content">
+  {
+    files.map((f) => (
+      <figure class="nb-logo nb-logo--mascot">
+        <div class={`nb-logo__stage nb-logo__stage--mascot nb-surface--${f.surface}`}>
+          <img src={kitUrl(`mascot/${f.show}`)} alt={`${f.name}, the Nobody Builds mascot`} loading="lazy" />
+        </div>
+        <figcaption>
+          <span>
+            <strong>{f.name}</strong>
+            <span class="nb-logo__use">{f.use}</span>
+          </span>
+          <span class="nb-logo__links">
+            {f.downloads.map((d) => <a href={kitUrl(`mascot/${d}`)} download>{label(d)}</a>)}
+          </span>
+        </figcaption>
+      </figure>
+    ))
+  }
+</div>

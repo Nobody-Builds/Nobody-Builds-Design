@@ -1,0 +1,23 @@
+---
+// The tested text/fill pairs, with their WCAG 2.x contrast ratios (scripts/build-tokens.py checks the full set).
+const pairs = [
+  { label: 'Paper on blueprint', fg: '#F5F7FB', bg: '#2457A6', ratio: '6.55:1' },
+  { label: 'Night Shift on paper', fg: '#172033', bg: '#F5F7FB', ratio: '15.17:1', outlined: true },
+  { label: 'Night Shift on sky', fg: '#172033', bg: '#CFE0F7', ratio: '12.13:1' },
+  { label: 'Night Shift on hard hat', fg: '#172033', bg: '#FDC521', ratio: '10.21:1' },
+  { label: 'Night Shift on butter', fg: '#172033', bg: '#FFE8A3', ratio: '13.42:1' },
+  { label: 'Night Shift on brick', fg: '#172033', bg: '#EA724A', ratio: '5.43:1' },
+];
+---
+
+<div class="nb-pairs not-content">
+  {
+    pairs.map((p) => (
+      <div class:list={['nb-pair', { 'nb-pair--outlined': p.outlined }]} style={`background:${p.bg};color:${p.fg}`}>
+        <span class="nb-pair__aa" aria-hidden="true">Aa</span>
+        <span class="nb-pair__ratio">{p.ratio}</span>
+        <span class="nb-pair__label">{p.label}</span>
+      </div>
+    ))
+  }
+</div>

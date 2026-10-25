@@ -1,0 +1,135 @@
+"""Writes tokens/tokens.css and tokens/tokens.json from the values below, and refuses to write them if any
+documented text pair falls under WCAG 2.2 contrast (4.5:1 text, 3:1 non-text UI).
+
+    python scripts/build-tokens.py
+
+The token names are the same as the Space Works kit, so a consumer can switch kits without code changes.
+"""
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+
+BRAND = {
+    "night-shift": "#172033",
+    "blueprint": "#2457A6",
+    "hard-hat": "#FDC521",
+    "sky": "#CFE0F7",
+    "butter": "#FFE8A3",
+    "brick": "#EA724A",
+    "paper": "#F5F7FB",
+}
+FONTS = {
+    "display": "Gilroy (600–700)",
+    "sans": "Gilroy (400–700)",
+    "accent": "Unbounded (500–600), one short phrase per layout",
+}
+
+
+def family(name, fill, hover, active, on, soft, ink=None):
+    t = {name: fill, f"{name}-hover": hover, f"{name}-active": active, f"on-{name}": on, f"{name}-soft": soft}
+    return t | ({f"{name}-ink": ink} if ink else {})
+
+
+LIGHT = {
+    "bg": "#F5F7FB", "surface": "#ECF0F7", "panel": "#FFFFFF", "hover": "#E4E9F2", "line": "#D3DAE6",
+    "outline": "#7D8699", "ink": "#172033", "muted": "#4F5A70", "focus": "#2457A6",
+    **family("accent", "#2457A6", "#1F4C92", "#1A417E", "#F5F7FB", "#E3ECF8", "#2457A6"),
+    **family("brand", "#2457A6", "#1F4C92", "#1A417E", "#F5F7FB", "#E3ECF8", "#2457A6"),
+    "brand-boundary": "#2457A6",
+    **family("emphasis", "#FDC521", "#FDCD45", "#FED66A", "#172033", "#FFF6D6"),
+    **family("success", "#A6D98F", "#95CA7E", "#84BA6E", "#172033", "#F1F9EC", "#3B6B2B"),
+    **family("warn", "#EA724A", "#EC8261", "#EF9377", "#172033", "#FCEBE4", "#A3412A"),
+    **family("info", "#CFE0F7", "#BDD3F1", "#ABC6EB", "#172033", "#EEF4FC", "#2457A6"),
+    "danger": "#B91C1C", "danger-hover": "#991B1B", "danger-active": "#851E1D", "on-danger": "#F5F7FB",
+    "danger-line": "#FCA5A5",
+    "sidebar": "#CFE0F7", "sidebar-hover": "#E0EBFA", "sidebar-active": "#2457A6",
+    "shadow-color": "#172033",
+}
+DARK = {
+    "bg": "#172033", "surface": "#1D2840", "panel": "#22304B", "hover": "#2A3957", "line": "#3E4D6B",
+    "outline": "#8592AD", "ink": "#F5F7FB", "muted": "#C3C8D2", "focus": "#FDC521",
+    **family("accent", "#7FA8E8", "#92B5EC", "#A5C2EF", "#172033", "#263A5C", "#A9C8F0"),
+    **family("brand", "#7FA8E8", "#92B5EC", "#A5C2EF", "#172033", "#263A5C", "#A9C8F0"),
+    "brand-boundary": "#A9C8F0",
+    **family("emphasis", "#FDC521", "#FDCD45", "#FED66A", "#172033", "#3A3424"),
+    **family("success", "#A6D98F", "#95CA7E", "#84BA6E", "#172033", "#26382F", "#A6D98F"),
+    **family("warn", "#EA724A", "#EC8261", "#EF9377", "#172033", "#3B2C2B", "#F2A88E"),
+    **family("info", "#CFE0F7", "#BDD3F1", "#ABC6EB", "#172033", "#24344F", "#CFE0F7"),
+    "danger": "#FCA5A5", "danger-hover": "#FDB9B6", "danger-active": "#FDC9C3", "on-danger": "#172033",
+    "danger-line": "#7C6261",
+    "sidebar": "#121A2B", "sidebar-hover": "#2A3957", "sidebar-active": "#7FA8E8",
+    "shadow-color": "#172033",
+}
+
+
+def lum(h):
+    c = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    c = [x / 12.92 if x <= 0.04045 else ((x + 0.055) / 1.055) ** 2.4 for x in c]
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+
+
+def ratio(a, b):
+    a, b = lum(a), lum(b)
+    return (max(a, b) + 0.05) / (min(a, b) + 0.05)
+
+
+def pairs(t):
+    """(foreground, background, minimum) for every pair the kit promises."""
+    out = [(fg, bg, 4.5) for fg in ("ink", "muted") for bg in ("bg", "surface", "panel", "hover")]
+    for fam in ("accent", "brand", "emphasis", "success", "warn", "info", "danger"):
+        out += [(f"on-{fam}", f"{fam}{s}", 4.5) for s in ("", "-hover", "-active")]
+    for fam in ("accent", "brand", "success", "warn", "info"):
+        out += [(f"{fam}-ink", bg, 4.5) for bg in ("bg", "panel", f"{fam}-soft")]
+    out += [("ink", "sidebar", 4.5), ("ink", "sidebar-hover", 4.5), ("on-accent", "sidebar-active", 4.5)]
+    out += [("focus", "bg", 3), ("focus", "panel", 3), ("outline", "bg", 3), ("brand-boundary", "bg", 3)]
+    return out
+
+
+failures = []
+report = []
+for theme, t in (("light", LIGHT), ("dark", DARK)):
+    for fg, bg, need in pairs(t):
+        r = ratio(t[fg], t[bg])
+        report.append(f"{theme:5} {fg:>15} on {bg:<15} {r:5.2f}:1")
+        if r < need:
+            failures.append(f"{theme}: {fg} {t[fg]} on {bg} {t[bg]} = {r:.2f}:1 (needs {need}:1)")
+if "-v" in sys.argv:
+    print("\n".join(report))
+if failures:
+    sys.exit("contrast check failed:\n  " + "\n  ".join(failures))
+
+# tokens.css: keep the @font-face header, regenerate the variables.
+css_path = ROOT / "tokens" / "tokens.css"
+header = css_path.read_text(encoding="utf-8").split(":root {", 1)[0]
+header = re.sub(r"^/\*.*?\*/", "/* Nobody Builds design tokens.\n Colours are space-separated sRGB triplets: "
+                "use as rgb(var(--color-accent)) or rgb(var(--color-accent) / 0.5).\n Light is the default; add "
+                "class \"dark\" on <html> for dark mode. Generated by scripts/build-tokens.py. */", header, flags=re.S)
+
+
+def triplet(h):
+    return " ".join(str(int(h[i:i + 2], 16)) for i in (1, 3, 5))
+
+
+def block(t):
+    return "\n".join(f"  --{'shadow-color' if k == 'shadow-color' else 'color-' + k}: {triplet(v)};"
+                     for k, v in t.items())
+
+
+fonts = ('  --font-display: "Gilroy", sans-serif;\n  --font-sans: "Gilroy", sans-serif;\n'
+         '  --font-accent: "Unbounded", "Gilroy", sans-serif;\n')
+brand = "\n".join(f"  --brand-{k}: {v};" for k, v in BRAND.items())
+css_path.write_text(f"{header}:root {{\n{fonts}{brand}\n\n{block(LIGHT)}\n}}\n\n:root.dark {{\n{block(DARK)}\n}}\n",
+                    encoding="utf-8")
+
+
+def without_shadow(t):  # the JSON carries colours only, like the Space Works kit
+    return {k: v for k, v in t.items() if k != "shadow-color"}
+
+
+(ROOT / "tokens" / "tokens.json").write_text(
+    json.dumps({"brand": BRAND, "fonts": FONTS, "light": without_shadow(LIGHT), "dark": without_shadow(DARK)}, indent=2,
+               ensure_ascii=False) + "\n", encoding="utf-8")
+print(f"build-tokens: {len(report)} contrast pairs pass; tokens.css and tokens.json written")

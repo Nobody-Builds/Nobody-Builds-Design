@@ -1,0 +1,69 @@
+---
+title: Typography
+description: Gilroy and Unbounded, what each one is for, and the type scale.
+---
+
+## Two fonts. Clear roles.
+
+Gilroy leads. Unbounded brings the bold geometric accent.
+
+<div class="nb-specimen not-content">
+  <span class="nb-specimen__name">Primary</span>
+  <p class="nb-specimen__big nb-gilroy" style="font-weight:600">Ready to build.</p>
+  <p>Gilroy sets the wordmark, headings, body and labels.</p>
+  <div class="nb-specimen__weights nb-gilroy">
+    <span style="font-weight:400">Regular</span>
+    <span style="font-weight:500">Medium</span>
+    <span style="font-weight:600">Semibold</span>
+    <span style="font-weight:700">Bold</span>
+  </div>
+</div>
+
+<div class="nb-specimen not-content">
+  <span class="nb-specimen__name">Secondary / accent</span>
+  <p class="nb-specimen__big nb-unbounded" style="font-weight:600;color:var(--sl-color-text-accent)">Wake up.</p>
+  <p>Unbounded is for short headlines and campaign accents: one per layout.</p>
+  <div class="nb-specimen__weights nb-unbounded">
+    <span style="font-weight:500">Medium</span>
+    <span style="font-weight:600">Semibold</span>
+  </div>
+</div>
+
+## A lean type scale
+
+Gilroy does the everyday work. Unbounded adds a single moment of emphasis.
+
+<table class="nb-scale">
+  <thead>
+    <tr><th scope="col">Role</th><th scope="col">Size / line</th><th scope="col">Sample</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Display</td><td>72 / 76</td><td><span class="nb-scale__sample nb-gilroy" style="font-size:clamp(1.75rem,5vw,3rem);font-weight:600">Ready to build.</span></td></tr>
+    <tr><td>Heading</td><td>48 / 52</td><td><span class="nb-scale__sample nb-gilroy" style="font-size:clamp(1.5rem,4vw,2.25rem);font-weight:600">Lay the first brick.</span></td></tr>
+    <tr><td>Subheading</td><td>32 / 38</td><td><span class="nb-scale__sample nb-gilroy" style="font-size:1.5rem;font-weight:600">Pick up where you left off.</span></td></tr>
+    <tr><td>Body</td><td>16 / 24</td><td><span class="nb-scale__sample nb-gilroy" style="font-size:1rem">Plans, parts and progress, all in one place.</span></td></tr>
+    <tr><td>Label</td><td>14 / 20</td><td><span class="nb-scale__sample nb-gilroy" style="font-size:0.875rem;font-weight:600">Start building</span></td></tr>
+    <tr><td>Accent</td><td>48 / 56</td><td><span class="nb-scale__sample nb-unbounded" style="font-size:clamp(1.5rem,4vw,2.25rem);font-weight:600">Wake up.</span></td></tr>
+  </tbody>
+</table>
+
+Keep long copy and interface text in Gilroy. Use Unbounded for short phrases only. The samples above are scaled
+down to fit this page; the numbers are the real sizes.
+
+## Font files
+
+The web fonts live in [`fonts/`](https://github.com/Nobody-Builds/NobodyBuilds-Design/tree/main/fonts) and
+are wired up by `tokens/tokens.css`:
+
+| File | Face |
+|---|---|
+| `Gilroy-Regular.woff`, `-Medium`, `-SemiBold`, `-Bold` | Gilroy 400, 500, 600, 700 |
+| `Unbounded-Variable.woff2` | Unbounded 500–600 (SIL Open Font License) |
+
+:::caution[Outfit is legacy]
+`Outfit-Variable.woff2`, `Gilroy-Light` and `Gilroy-ExtraBold` come from the same font set as the
+Space Works kit and stay in `fonts/` only for consumers that already use them. Don't use them on new surfaces.
+:::
+
+Gilroy is not an open-source font. The files are included at the owner's request; use them under the
+applicable Gilroy licence. See the [credits](/about/credits/) for details.
