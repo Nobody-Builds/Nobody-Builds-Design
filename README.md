@@ -15,7 +15,7 @@ repository by `site/` on every push to `main`. To run it locally: `cd site && np
 
 | Folder | What it holds |
 |---|---|
-| `brand/` | `logo-masters.png` (the one-page overview) and `source/`: the untouched GitHub avatar and the builder cut out of it, the only sources of the artwork |
+| `brand/` | `nobody-builds-brand-guidelines-v1.pdf` and its 17 pages in `guidelines/png/`, `logo-masters.png` (the one-page overview) and `source/`: the untouched GitHub avatar and the builder cut out of it, the only sources of the artwork |
 | `logo/` | Seven masters as PNG, each with an SVG that wraps it: `symbol`, `symbol-dark`, `lockup-stacked`, `lockup-stacked-reversed`, `lockup-horizontal`, `lockup-horizontal-reversed`, `app-icon` |
 | `mascot/` | **The builder**: `builder.png` (cut out), `dark/builder.png` (Paper sticker border, for dark surfaces only) and `original/builder.png` (the avatar, byte for byte). Usage rules in `mascot/README.md` |
 | `icons/` | `favicon.svg`, PNG app icons (16, 32, 180, 192, 512) and the 1200×630 social card |
@@ -23,7 +23,7 @@ repository by `site/` on every push to `main`. To run it locally: `cd site && np
 | `tokens/` | `tokens.css` (`@font-face` + light/dark colour variables as RGB triplets) and `tokens.json` (the same colours as hex, plus the seven brand colours) |
 | `docs/` | `ui-brand-spec.md` (token derivations, contrast ratios, states, status pills, type scale, logo use), `ux-spec.md` and `ux-screens-longtail.md` (placeholders until there's a product) |
 | `screenshots/ux/` | Screenshots for the site's UX pages, once there are screens |
-| `scripts/` | `build-assets.py` (every logo, icon and mascot file), `build-tokens.py` (tokens + contrast checks), `cutout.py` |
+| `scripts/` | `build-assets.py` (every logo, icon and mascot file), `build-guidelines.py` (the 17-page guidelines and PDF), `build-tokens.py` (tokens + contrast checks), `cutout.py` |
 | `site/` | The Starlight website published to GitHub Pages; `scripts/sync-kit.mjs` copies the kit in at build time |
 
 ## Brand at a glance
@@ -63,6 +63,7 @@ Add the class `dark` to `<html>` for dark mode. The font URLs in `tokens.css` ar
 pip install -r scripts/requirements.txt
 python scripts/build-tokens.py    # tokens.css + tokens.json, fails if any text pair loses contrast
 python scripts/build-assets.py    # logo/, icons/, mascot/, brand/logo-masters.png
+python scripts/build-guidelines.py  # brand/guidelines/png/01-17.png + the PDF
 ```
 
 The builder only exists as the 460 × 460 GitHub avatar. If a higher-resolution original turns up, cut it out

@@ -15,7 +15,9 @@ token names and Starlight site). Brand content is Nobody Builds' own.
 - Base path is `/NobodyBuilds-Design`; frontmatter links and raw `<img src>` must include it.
 - Python deps: `scripts/requirements.txt` (Pillow, fontTools, brotli). Run Python with `-P` on Windows if a
   local file shadows a module.
-- Placeholders (`nb-todo`): what Nobody Builds makes, the builder's name, UX pages/specs, guidelines PDF.
+- Placeholders (`nb-todo`): what Nobody Builds makes (also on guidelines page 02), the builder's name, UX pages/specs.
+- **Guidelines:** `python scripts/build-guidelines.py` (after build-assets) draws the 17 pages in
+  `brand/guidelines/png/` and the PDF, mirroring the Space Works guidelines v1 page by page.
 - Theme toggle (`site/src/components/ThemeSelect.astro` + the `nb-theme-*` rules at the end of
   `custom.css`) ports the Space Works Events reveal: View Transition circle from the button, cross-fade
   fallback, instant for reduced motion. In a hidden/background tab the transition waits for the next frame.

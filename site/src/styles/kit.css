@@ -113,6 +113,29 @@
 }
 .nb-logo__links a:hover { border-color: var(--sl-color-text-accent); color: var(--sl-color-text-accent); }
 
+/* Guideline pages */
+.nb-pages {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+  gap: 1rem;
+  margin-block: 1.5rem;
+}
+.nb-page {
+  display: grid;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: var(--sl-color-gray-3);
+  font-size: 0.875rem;
+}
+.nb-page img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid var(--sl-color-hairline);
+}
+.nb-page:hover img { border-color: var(--sl-color-text-accent); }
+.nb-page:hover { color: var(--sl-color-text-accent); }
+
 /* Tokens */
 .nb-tokens td { white-space: nowrap; }
 .nb-chip {
