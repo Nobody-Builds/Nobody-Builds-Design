@@ -1,4 +1,4 @@
-# NobodyBuilds-Design
+# Nobody-Builds-Design
 
 The Nobody Builds design system: brand, logo masters, the builder mascot, icons, fonts, design tokens and the
 UI specs. Use it as a git submodule in any Nobody Builds project so every surface draws from one source.
