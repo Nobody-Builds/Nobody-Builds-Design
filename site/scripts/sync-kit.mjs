@@ -16,7 +16,7 @@ const root = join(site, '..');
 const kit = join(site, 'public', 'kit');
 const assets = join(site, 'src', 'assets', 'kit');
 const specs = join(site, 'src', 'content', 'docs', 'specs');
-const repo = 'https://github.com/Nobody-Builds/NobodyBuilds-Design';
+const repo = 'https://github.com/Nobody-Builds/Nobody-Builds-Design';
 
 for (const dir of [kit, assets, specs]) {
   rmSync(dir, { recursive: true, force: true });

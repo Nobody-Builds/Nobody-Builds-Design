@@ -4,10 +4,10 @@ The Nobody Builds design system: brand, logo masters, the builder mascot, icons,
 UI specs. Use it as a git submodule in any Nobody Builds project so every surface draws from one source.
 
 ```bash
-git submodule add https://github.com/Nobody-Builds/NobodyBuilds-Design.git design
+git submodule add https://github.com/Nobody-Builds/Nobody-Builds-Design.git design
 ```
 
-**Browse it at [nobody-builds.github.io/NobodyBuilds-Design](https://nobody-builds.github.io/NobodyBuilds-Design/)**:
+**Browse it at [nobody-builds.github.io/Nobody-Builds-Design](https://nobody-builds.github.io/Nobody-Builds-Design/)**:
 the logo masters, the mascot, colours, type, voice, every design token and the UI specs, published from this
 repository by `site/` on every push to `main`. To run it locally: `cd site && npm install && npm run dev`.
 

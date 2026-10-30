@@ -5,11 +5,11 @@ import starlightLinksValidator from 'starlight-links-validator';
 import { satteri } from '@astrojs/markdown-satteri';
 import { baseLinksPlugin } from './src/plugins/base-links.mjs';
 
-// GitHub Pages serves the site at https://nobody-builds.github.io/NobodyBuilds-Design/. Set
+// GitHub Pages serves the site at https://nobody-builds.github.io/Nobody-Builds-Design/. Set
 // DESIGN_SITE_URL to override the origin used for the sitemap and canonical links.
 const site = process.env.DESIGN_SITE_URL || 'https://nobody-builds.github.io';
-const base = '/NobodyBuilds-Design';
-const repo = 'https://github.com/Nobody-Builds/NobodyBuilds-Design';
+const base = '/Nobody-Builds-Design';
+const repo = 'https://github.com/Nobody-Builds/Nobody-Builds-Design';
 
 export default defineConfig({
   site,

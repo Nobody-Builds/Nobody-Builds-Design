@@ -33,6 +33,6 @@ there's a product to design for.
 
 ## Licence
 
-The NobodyBuilds-Design repository, including this site, is licensed under the
-[GNU Affero General Public License v3.0 or later](https://github.com/Nobody-Builds/NobodyBuilds-Design/blob/main/LICENSE).
+The Nobody-Builds-Design repository, including this site, is licensed under the
+[GNU Affero General Public License v3.0 or later](https://github.com/Nobody-Builds/Nobody-Builds-Design/blob/main/LICENSE).
 The fonts keep their own licences.

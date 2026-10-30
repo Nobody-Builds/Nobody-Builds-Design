@@ -1,4 +1,4 @@
-# NobodyBuilds-Design
+# Nobody-Builds-Design
 
 Design system for the Nobody Builds GitHub org, modelled on SpaceWorks-HQ/SpaceWorks-Design (same folders,
 token names and Starlight site). Brand content is Nobody Builds' own.
@@ -12,7 +12,7 @@ token names and Starlight site). Brand content is Nobody Builds' own.
 - **Site:** `site/` (Astro 7 + Starlight). `npm run build` runs `scripts/sync-kit.mjs` first, which copies the
   kit into git-ignored `public/kit`, `src/assets/kit` and `src/content/docs/specs`. CSS prefix is `nb-`.
   The site palette in `site/src/styles/custom.css` is maintained by hand to match the tokens.
-- Base path is `/NobodyBuilds-Design`; frontmatter links and raw `<img src>` must include it.
+- Base path is `/Nobody-Builds-Design`; frontmatter links and raw `<img src>` must include it.
 - Python deps: `scripts/requirements.txt` (Pillow, fontTools, brotli). Run Python with `-P` on Windows if a
   local file shadows a module.
 - Placeholders (`nb-todo`): what Nobody Builds makes (also on guidelines page 02), the builder's name, UX pages/specs.
